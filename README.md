@@ -1,125 +1,162 @@
-# Tracker A2 — Computer Vision Tasks
 
-## Project Overview
-This repository contains a series of three Jupyter Notebooks (`Task1.ipynb`, `Task2.ipynb`, and `Task3.ipynb`) that explore different computer vision workflows, model training techniques, and performance evaluations.  
-The focus is on understanding object tracking and detection pipelines using modern deep learning methods.
+# 🧠 Computer Vision Project — Image Classification, Object Detection & Tracking
+
+## 📘 Overview
+This repository contains three comprehensive notebooks demonstrating key computer vision techniques — **image classification**, **object detection**, and **object tracking** — using both deep learning and traditional computer vision algorithms.
+
+Each task includes implementation, evaluation, and visualization, with comparative performance analysis based on real experimental results.
 
 ---
 
-## Repository Structure
+## 🔹 Task 1: Image Classification with CNNs
+
+### 🧾 Objective
+To design and compare multiple CNN architectures on the **CIFAR-10** dataset (10 object classes, 60,000 images).
+
+### ⚙️ Implementation
+Implemented using **PyTorch**, four model configurations were trained and evaluated:
+
+| Model | Optimizer + Scheduler | Test Accuracy (%) |
+|:--|:--:|:--:|
+| **ResNet18** | SGD + StepLR | **90.04** |
+| **CNN** | Adam + ReduceLR | 86.10 |
+| **ResNet18** | Adam + ReduceLR | 86.09 |
+| **CNN** | SGD + StepLR | 82.37 |
+
+### 🧩 Experimentation Details
+- Compared optimizers: **SGD vs Adam**  
+- Evaluated learning rate schedulers: **StepLR** and **ReduceLROnPlateau**  
+- Conducted experiments on multiple architecture–optimizer combinations  
+
+### 📊 Visualizations
+- Accuracy/Loss curves for training and validation  
+- Confusion matrices for class-level performance  
+- Misclassified example images  
+- Activation maps (Conv Layer 1 and 2) for ResNet and Custom CNN  
+
+### 💬 Discussion
+The **ResNet18 with SGD + StepLR** achieved the **highest accuracy (90.04%)** and most stable convergence.  
+Adam converged faster but plateaued earlier. The baseline CNN underperformed slightly due to its limited depth and capacity.
+
+---
+
+## 🔹 Task 2: Object Detection
+
+### 🧾 Objective
+To evaluate and compare a **two-stage detector (Faster R-CNN)** and a **single-stage detector (YOLOv8n)** on a common dataset.
+
+### ⚙️ Models
+- **Two-stage:** Faster R-CNN (TorchVision pretrained on COCO)  
+- **Single-stage:** YOLOv8n (Ultralytics implementation)
+
+### 🧩 Dataset
+- **Pascal VOC 2007** subset used for evaluation.  
+- Uniform preprocessing and same test samples for both models.
+
+### 📈 Results
+
+| Metric | Faster R-CNN | YOLOv8n |
+|:--|:--:|:--:|
+| **mAP@0.5** | 0.62 | **0.68** |
+| **FPS (Inference Speed)** | 3.62 | **12.93** |
+| **Model Size (MB)** | 167 | **6.25** |
+
+### 🧠 Visualizations
+- Detection bounding boxes on sample test images  
+- Precision-recall and mAP curves  
+- Side-by-side comparison of inference outputs  
+
+### 💬 Discussion
+YOLOv8n provided **higher inference speed (≈13 FPS)** and smaller size (≈6 MB) while maintaining competitive accuracy.  
+Faster R-CNN achieved slightly higher precision but at the cost of speed and resource usage.  
+For real-time deployment, **YOLOv8n** is preferred; for high-precision offline detection, **Faster R-CNN** excels.
+
+---
+
+## 🔹 Task 3: Object Tracking
+
+### 🧾 Objective
+To implement and analyze classical **OpenCV tracking algorithms** on video data.
+
+### ⚙️ Trackers Used
+- **MOSSE**  
+- **KCF (Kernelized Correlation Filter)**  
+- **CSRT (Channel and Spatial Reliability Tracker)**  
+
+### 🧩 Dataset
+Short video clips (pedestrian and vehicle scenes) from **Pexels** and **MOT Challenge** datasets.  
+Each tracker was initialized with a bounding box and evaluated over full sequences.
+
+### 📈 Results
+
+| Tracker | Average FPS | Success Rate (%) | Frames Tracked | Total Frames |
+|:--|:--:|:--:|:--:|:--:|
+| **MOSSE** | **60.00** | **66.00** | 524 | 794 |
+| **KCF** | 59.91 | 0.80 | 3 | 373 |
+| **CSRT** | 46.06 | 35.30 | 212 | 601 |
+
+### 🎥 Visual Outputs
+- Video overlays with tracker bounding boxes  
+- Frame-by-frame comparison of stability and drift  
+- Failure cases (occlusion and re-detection)
+
+### 💬 Discussion
+- **MOSSE** offered the **highest speed (60 FPS)** and moderate accuracy — ideal for real-time low-power systems.  
+- **CSRT** delivered the **most stable tracking** under occlusion but was slower (~46 FPS).  
+- **KCF** struggled under occlusion and scale variation, with very low success rate in this setup.
+
+---
+
+## 📂 Repository Structure
 
 ```
-📂 Tracker_A2/
-│
-├── Task1.ipynb      # Dataset preparation, visualization, and preprocessing
-├── Task2.ipynb      # Model training, performance analysis, and trade-off discussion
-├── Task3.ipynb      # Advanced experimentation and final evaluation
-├── data/            # (Ignored) Large datasets such as CIFAR-10
-└── README.md        # Project documentation
+├── Task1.ipynb     # Image Classification with CNNs (PyTorch)
+├── Task2.ipynb     # Object Detection (Faster R-CNN & YOLOv8)
+├── Task3.ipynb     # Object Tracking (OpenCV)
+├── data/           # Datasets (excluded from Git tracking)
+├── results/        # Saved plots, outputs, and visualizations
+└── README.md       # Project documentation
 ```
 
 ---
 
-## Task Summaries
+## 🧰 Dependencies
 
-### ** Task 1 — Data Preparation & Preprocessing**
-- Loaded and structured datasets (e.g., CIFAR-10).  
-- Implemented preprocessing pipelines for normalization and augmentation.  
-- Defined data loaders and visualized sample images.  
-- Established the foundation for subsequent model training and testing.  
+Install all dependencies using:
 
-**Core Skills Demonstrated:**  
-Data handling, preprocessing, visualization, dataset exploration.
-
----
-
-### ** Task 2 — Model Development & Analysis**
-- Trained deep learning models for object recognition/tracking.  
-- Compared model performance using accuracy, loss curves, and inference speed.  
-- Documented trade-offs between model size, speed, and accuracy.  
-- Concluded with insights into optimal model configurations for balanced performance.
-
-**Sections Included:**
-- **Discussion Summary**  
-- **Performance Analysis**  
-- **Trade-off Summary**  
-- **Conclusion**
-
-**Core Skills Demonstrated:**  
-Model optimization, evaluation, and critical performance assessment.
-
----
-
-### ** Task 3 — Experimental Evaluation**
-- Conducted additional experiments for performance validation.  
-- Fine-tuned models and hyperparameters.  
-- Verified model robustness on unseen or augmented data.  
-
-**Core Skills Demonstrated:**  
-Experimental design, hyperparameter tuning, and validation testing.
-
----
-
-## Setup Instructions
-
-### **1. Clone the Repository**
 ```bash
+pip install torch torchvision torchaudio ultralytics opencv-python matplotlib seaborn scikit-learn
+```
+
+---
+
+## 🚀 How to Run
+
+```bash
+# 1. Clone this repository
 git clone https://github.com/mastersubhajit/Tracker_A2.git
 cd Tracker_A2
-```
 
-### **2. Create and Activate Virtual Environment**
-```bash
-python3 -m venv .venv
-source .venv/bin/activate  # macOS/Linux
-.venv\Scripts\activate     # Windows
-```
-
-### **3. Install Dependencies**
-```bash
-pip install -r requirements.txt
-```
-
-If `requirements.txt` is missing, manually install key packages:
-```bash
-pip install torch torchvision matplotlib numpy jupyter
+# 2. Open notebooks
+jupyter notebook Task1.ipynb
+jupyter notebook Task2.ipynb
+jupyter notebook Task3.ipynb
 ```
 
 ---
 
-## Data Handling
-The dataset (`cifar-10-python.tar.gz`) is **not included** in this repository due to GitHub’s 100MB file limit.  
-To run the notebooks:
-1. Download the dataset manually from [CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar.html).  
-2. Place it in a `data/` folder:
-   ```
-   Tracker_A2/data/cifar-10-python.tar.gz
-   ```
+## 🏁 Summary of Results
 
-> **Note:** The `data/` directory is listed in `.gitignore` to prevent large file uploads.
+| Task | Topic | Framework | Best Metric(s) | Key Takeaway |
+|------|--------|------------|----------------|---------------|
+| **1** | Image Classification | PyTorch | ResNet18 (90.04%) | Transfer learning yields top performance |
+| **2** | Object Detection | TorchVision / YOLOv8 | YOLOv8: mAP=0.68, FPS=12.93 | YOLOv8 is faster, smaller, and competitive |
+| **3** | Object Tracking | OpenCV | MOSSE: 60 FPS, 66% success | CSRT more robust; MOSSE best speed |
 
 ---
 
-## Results Summary
-| Task | Focus | Key Output |
-|------|--------|------------|
-| Task 1 | Dataset processing | Visualized and prepared input data |
-| Task 2 | Model training | Performance graphs and trade-off analysis |
-| Task 3 | Experimental validation | Refined model performance |
-
----
-
-## Technologies Used
-- **Python 3.12**
-- **PyTorch**
-- **Torchvision**
-- **Matplotlib**
-- **NumPy**
-- **Jupyter Notebook**
-
----
-
-## 🧑‍💻 Author
+## 👨‍💻 Author
 **Subhajit Ghosh**  
-Computer Vision | Deep Learning Enthusiast  
+Master’s Student in Artificial Intelligence  
+📍 *Italy / India*  
 🔗 [GitHub Profile](https://github.com/mastersubhajit)
