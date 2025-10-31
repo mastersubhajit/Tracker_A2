@@ -118,9 +118,9 @@ Please make sure to update tests as appropriate and follow the code style guidel
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE) - see the LICENSE file for details.
+License information to be determined. Please add a LICENSE file to the repository when ready.
 
-*(Update the license information according to your project's license)*
+*(Update this section with your project's license information once decided)*
 
 ## Contact
 
