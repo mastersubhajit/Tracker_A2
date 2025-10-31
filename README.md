@@ -1,19 +1,19 @@
 
-# 🧠 Computer Vision Project — Image Classification, Object Detection & Tracking
+# Computer Vision Project — Image Classification, Object Detection & Tracking
 
-## 📘 Overview
+## Overview
 This repository contains three comprehensive notebooks demonstrating key computer vision techniques — **image classification**, **object detection**, and **object tracking** — using both deep learning and traditional computer vision algorithms.
 
 Each task includes implementation, evaluation, and visualization, with comparative performance analysis based on real experimental results.
 
 ---
 
-## 🔹 Task 1: Image Classification with CNNs
+## Task 1: Image Classification with CNNs
 
-### 🧾 Objective
+### Objective
 To design and compare multiple CNN architectures on the **CIFAR-10** dataset (10 object classes, 60,000 images).
 
-### ⚙️ Implementation
+### Implementation
 Implemented using **PyTorch**, four model configurations were trained and evaluated:
 
 | Model | Optimizer + Scheduler | Test Accuracy (%) |
@@ -23,37 +23,37 @@ Implemented using **PyTorch**, four model configurations were trained and evalua
 | **ResNet18** | Adam + ReduceLR | 86.09 |
 | **CNN** | SGD + StepLR | 82.37 |
 
-### 🧩 Experimentation Details
+### Experimentation Details
 - Compared optimizers: **SGD vs Adam**  
 - Evaluated learning rate schedulers: **StepLR** and **ReduceLROnPlateau**  
 - Conducted experiments on multiple architecture–optimizer combinations  
 
-### 📊 Visualizations
+### Visualizations
 - Accuracy/Loss curves for training and validation  
 - Confusion matrices for class-level performance  
 - Misclassified example images  
 - Activation maps (Conv Layer 1 and 2) for ResNet and Custom CNN  
 
-### 💬 Discussion
+### Discussion
 The **ResNet18 with SGD + StepLR** achieved the **highest accuracy (90.04%)** and most stable convergence.  
 Adam converged faster but plateaued earlier. The baseline CNN underperformed slightly due to its limited depth and capacity.
 
 ---
 
-## 🔹 Task 2: Object Detection
+## Task 2: Object Detection
 
-### 🧾 Objective
+### Objective
 To evaluate and compare a **two-stage detector (Faster R-CNN)** and a **single-stage detector (YOLOv8n)** on a common dataset.
 
-### ⚙️ Models
+### Models
 - **Two-stage:** Faster R-CNN (TorchVision pretrained on COCO)  
 - **Single-stage:** YOLOv8n (Ultralytics implementation)
 
-### 🧩 Dataset
+### Dataset
 - **Pascal VOC 2007** subset used for evaluation.  
 - Uniform preprocessing and same test samples for both models.
 
-### 📈 Results
+### Results
 
 | Metric | Faster R-CNN | YOLOv8n |
 |:--|:--:|:--:|
@@ -61,33 +61,33 @@ To evaluate and compare a **two-stage detector (Faster R-CNN)** and a **single-s
 | **FPS (Inference Speed)** | 3.62 | **12.93** |
 | **Model Size (MB)** | 167 | **6.25** |
 
-### 🧠 Visualizations
+### Visualizations
 - Detection bounding boxes on sample test images  
 - Precision-recall and mAP curves  
 - Side-by-side comparison of inference outputs  
 
-### 💬 Discussion
+### Discussion
 YOLOv8n provided **higher inference speed (≈13 FPS)** and smaller size (≈6 MB) while maintaining competitive accuracy.  
 Faster R-CNN achieved slightly higher precision but at the cost of speed and resource usage.  
 For real-time deployment, **YOLOv8n** is preferred; for high-precision offline detection, **Faster R-CNN** excels.
 
 ---
 
-## 🔹 Task 3: Object Tracking
+## Task 3: Object Tracking
 
-### 🧾 Objective
+### Objective
 To implement and analyze classical **OpenCV tracking algorithms** on video data.
 
-### ⚙️ Trackers Used
+### Trackers Used
 - **MOSSE**  
 - **KCF (Kernelized Correlation Filter)**  
 - **CSRT (Channel and Spatial Reliability Tracker)**  
 
-### 🧩 Dataset
+### Dataset
 Short video clips (pedestrian and vehicle scenes) from **Pexels** and **MOT Challenge** datasets.  
 Each tracker was initialized with a bounding box and evaluated over full sequences.
 
-### 📈 Results
+### Results
 
 | Tracker | Average FPS | Success Rate (%) | Frames Tracked | Total Frames |
 |:--|:--:|:--:|:--:|:--:|
@@ -95,12 +95,12 @@ Each tracker was initialized with a bounding box and evaluated over full sequenc
 | **KCF** | 59.91 | 0.80 | 3 | 373 |
 | **CSRT** | 46.06 | 35.30 | 212 | 601 |
 
-### 🎥 Visual Outputs
+### Visual Outputs
 - Video overlays with tracker bounding boxes  
 - Frame-by-frame comparison of stability and drift  
 - Failure cases (occlusion and re-detection)
 
-### 💬 Discussion
+### Discussion
 - **MOSSE** offered the **highest speed (60 FPS)** and moderate accuracy — ideal for real-time low-power systems.  
 - **CSRT** delivered the **most stable tracking** under occlusion but was slower (~46 FPS).  
 - **KCF** struggled under occlusion and scale variation, with very low success rate in this setup.
@@ -120,7 +120,7 @@ Each tracker was initialized with a bounding box and evaluated over full sequenc
 
 ---
 
-## 🧰 Dependencies
+## Dependencies
 
 Install all dependencies using:
 
@@ -130,7 +130,7 @@ pip install torch torchvision torchaudio ultralytics opencv-python matplotlib se
 
 ---
 
-## 🚀 How to Run
+## How to Run
 
 ```bash
 # 1. Clone this repository
@@ -145,7 +145,7 @@ jupyter notebook Task3.ipynb
 
 ---
 
-## 🏁 Summary of Results
+## Summary of Results
 
 | Task | Topic | Framework | Best Metric(s) | Key Takeaway |
 |------|--------|------------|----------------|---------------|
@@ -154,9 +154,3 @@ jupyter notebook Task3.ipynb
 | **3** | Object Tracking | OpenCV | MOSSE: 60 FPS, 66% success | CSRT more robust; MOSSE best speed |
 
 ---
-
-## 👨‍💻 Author
-**Subhajit Ghosh**  
-Master’s Student in Artificial Intelligence  
-📍 *Italy / India*  
-🔗 [GitHub Profile](https://github.com/mastersubhajit)
