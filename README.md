@@ -2,7 +2,7 @@
 # Computer Vision Project — Image Classification, Object Detection & Tracking
 
 ## Overview
-This repository contains three comprehensive notebooks demonstrating key computer vision techniques — **image classification**, **object detection**, and **object tracking** — using both deep learning and traditional computer vision algorithms.
+This repository contains three comprehensive notebooks demonstrating key computer vision techniques **image classification**, **object detection**, and **object tracking** using both deep learning and traditional computer vision algorithms.
 
 Each task includes implementation, evaluation, and visualization, with comparative performance analysis based on real experimental results.
 
